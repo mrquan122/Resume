@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Resume</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="jquery/jquery-1.7.1.min.js" ></script>
+<script scr="jquery-mousewheel-master/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+ $(function(){
+           
+ 
+          var delay;
+     
+          sectionOne();
+          console.log("i am load");
+
+      function IsPC() 
+     { 
+           var userAgentInfo = navigator.userAgent;       console.log('demvice'+userAgentInfo);
+           var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"); 
+           var flag = true; 
+           for (var v = 0; v < Agents.length; v++) { 
+               if (userAgentInfo.indexOf(Agents[v]) > 0) { flag = false; break; } 
+           } 
+           return flag; 
+         }  
+
+     if (IsPC()) {
+       
+       $(document).bind('mousewheel', function(event, delta) {
+            var delta=event.originalEvent.wheelDelta;   console.log('delta'+event.originalEvent.wheelDelta);
+              clearTimeout(delay);
+             delay=setTimeout(contentScroll,500);
+          function contentScroll(){
+                  
+          if(delta<0){ $('body').animate({"scrollTop":"+=800px"},100); 
+           }else {
+                    $('body').animate({"scrollTop":"-=800px"},100); 
+  
+           }
+        }              
+ 
+       
+          var windowHeight=$(window).height();
+          var scrollTop= $(this).scrollTop();
+          var currentId;  
+           
+         $('.content >div').each(function(index, el) {
+           $this=$(this);
+            var top= $this.offset().top;                               console.log('top'+top);
+            if (top<scrollTop+windowHeight-100) {
+             
+                currentId=$this.attr('class');
+                console.log(currentId);
+                switch(currentId){
+                                  case 'sectionOne':
+                                   sectionTwo();
+                                   break;
+                                  case 'sectionTwo':
+                                   sectionThree();
+                                   break;
+                                  case 'sectionThree':
+                                    sectionFour();
+                                  case 'sectionFour':
+                                    sectionFive();
+                                 
+                      
+                }
+              //   var obj=eval("("+currentId+")"); 
+              
+             //    obj();
+              
+                 
+            }
+       });     
+           $('.content .aside li').each(function(index, val) {
+                         
+                     var sideId=$(this).attr('id');
+                      $(this).removeClass('active');
+                     if (sideId==currentId) {
+                         $(this).addClass('active');
+                      //   console.log( $(this).next());
+                            
+                     }
+                           
+           });
+ 
+      
+      });
+
+    }else {
+            
+            document.addEventListener('touchmove' ,function(event, delta) {
+    
+       
+          var windowHeight=$(window).height();
+          var scrollTop= $(this).scrollTop();
+          var currentId;  
+           
+         $('.content >div').each(function(index, el) {
+           $this=$(this);
+            var top= $this.offset().top;                               console.log('top'+top);
+            if (top<scrollTop+windowHeight-100) {
+             
+                currentId=$this.attr('class');
+                console.log(currentId);
+                switch(currentId){
+                                  case 'sectionOne':
+                                   sectionTwo();
+                                   break;
+                                  case 'sectionTwo':
+                                   sectionThree();
+                                   break;
+                                  case 'sectionThree':
+                                    sectionFour();
+                                  case 'sectionFour':
+                                    sectionFive();
+                                 
+                      
+                }
+              //   var obj=eval("("+currentId+")"); 
+              
+             //    obj();
+              
+                 
+            }
+       });     
+           $('.content .aside li').each(function(index, val) {
+                         
+                     var sideId=$(this).attr('id');
+                      $(this).removeClass('active');
+                     if (sideId==currentId) {
+                         $(this).addClass('active');
+                      //   console.log( $(this).next());
+                            
+                     }
+                           
+           });
+ 
+      
+      })   
+
+    }
+   
+
+
+   //   $('.content .sectionOne').mouseenter(
+      	function sectionOne() {
+                  var j=0;
+
+                 $('.content .sectionOne  div img').animate({top:'80px'}, 1000);
+
+                
+
+              function fadeH2(){$('.content .sectionOne  div h2').animate({top: '230px', opacity:'1'}, 2000);}
+
+              function fadeSpan(){   $('.content .sectionOne span').animate({width:'700px'}, 3000);}
+             
+              function fadeIn(){
+                  
+                	 $('.content .sectionOne  div p').eq(j).fadeIn('1000');
+                	  j=j+1;
+                }
+             
+            function  fadeP() {setInterval(fadeIn,500);   }
+
+              setTimeout(fadeH2 ,700);
+              setTimeout(fadeSpan,2000);
+              setTimeout(fadeP,2500);
+            
+      }
+
+
+        
+
+        
+         $('.sectionTwo .info li div').mouseover(function(event) {
+         	/* Act on the event */
+         	        var  $this=$(this);
+         	        var speed=10;
+                    $this.css({
+                    	'background-color': '#fff',
+                    	'border': '5px solid '
+                    });             
+
+
+         	        var move=function(){
+
+         	      	       $this.css('background-position', speed+'px');
+         	      	       speed+=10;
+         	      	       if(speed>120){
+         	      	       	speed=0;
+
+         	      	       }
+         	      	       console.log("hello");
+         	      	       
+         	         }
+                   
+         	         var timer= setInterval(move,50);
+         	                
+                      function endTimer(){
+                    	clearInterval(timer); 
+
+                            }
+
+                     setTimeout(endTimer ,750);
+
+
+         	      
+         }).mouseout(function(event) {
+         	/* Act on the event */
+                     var  $this=$(this);
+         	      
+                    $this.css({
+                    	'background-color': '#eee',
+                    	'border': '5px solid #fff'
+                    });             
+
+         });
+
+    
+  //    $('.sectionTwo .infoTwo div' ).mouseenter(
+
+        	function sectionTwo() {
+      	/* Act on the event */
+                   $('.sectionTwo .infoTitle span').css('width', '150px');
+                  function titleShow() {
+                	$('.sectionTwo .infoTitle h5').fadeIn('slow');}
+                 
+
+                  setTimeout(titleShow,1000);
+
+                    var $p =$('.sectionTwo .infoTwo div p')
+
+                   	var p=0;
+
+                   function moveUp (){
+                   
+           	    	$p.eq(p).animate({top:25*p+'px'}, 200);
+                  
+                      p=p+1;
+                     
+                    console.log("inner"+p);
+                   
+                  }
+
+               var timer= setInterval(moveUp,500);
+
+        
+               function clear(){ 
+
+               	  clearInterval(timer); 
+               	  console.log('stopinter');             
+                }
+
+              setTimeout(clear, 3000);
+
+             
+          
+
+      }
+
+        var $span= $('.sectionThree .skillInfo >ul>li span');
+        for (var i = 0; i < $span.length; i++) {
+                    (function(i){
+                            $span.eq(i).mouseover(function(event) {
+                            	/* Act on the event */
+                            	  $('.sectionThree .skillInfo >ul>li div:last-child').eq(i).fadeIn('400');
+                            });
+
+                    })(i)
+        }
+       
+      
+
+         function sectionThree(event) {
+         	/* Act on the event */
+         	         $('.sectionThree .title span').css('width', '150px');
+                  function titleShow() {
+                	$('.sectionThree .title h5').fadeIn('slow');  }
+               
+                     setTimeout(titleShow,1000);
+         	        $('.sectionThree .skillInfo >ul>li div img').animate({width: '80px', height: '100px'}, 100);
+
+         	        $(".sectionThree .skillInfo >ul>li h3").animate({'font-size':'22px',height:'22px'}, 100);
+         	        $('.sectionThree .skillInfo >ul>li span img').animate({width: '20px', height: '20px'}, 100 );
+
+         }
+         
+         function sectionFour (){
+
+                    $('.sectionFour .jobTitle span').css('width', '150px');
+
+                    function titleShow() {
+                	  $('.sectionFour .jobTitle h5').fadeIn('slow');}   
+
+                    setTimeout(titleShow,1000);
+
+                    $('.sectionFour .jobContent').animate({top:'0px'}, 1000);
+         
+               }
+       
+         
+         var n=0;     
+       $('.sectionFour .jobContent .dirLeft').click(function(event) {
+       	     n=n-1;
+       	     if(n<-2){
+       	     	n=-2;
+       	     }
+            $('.sectionFour .items').animate({left:n*902+'px'});
+         
+
+              
+          
+       });
+
+       $('.sectionFour .jobContent .dirRight').click(function(event) {
+             n=n+1;
+       	      if(n>0){
+       	      	n=0;
+       	      }
+            $('.sectionFour .items').animate({left:n*902+'px'});
+         
+       	  
+       });
+     
+
+    //  $('.sectionFive .demoTitle').click(
+
+      	function sectionFive(event) {
+      	/* Act on the event */
+
+      	     $('.sectionFive .demoTitle span').css('width', '150px');
+                    function titleShow() {
+                	                $('.sectionFive .demoTitle h5').fadeIn('slow');
+                                }   
+
+          setTimeout(titleShow,1000);
+      	   var k=0;
+      	   function show(){
+      	   	     $('.sectionFive li img').eq(k).fadeIn();
+      	   	     k=k+1;
+      	   }
+      	   
+      	   function clear(){
+      	   	     clearInterval(timer);
+      	   	  
+      	   }
+
+      	  timer=setInterval(show ,200);
+
+      	     setTimeout(clear, 2000);
+
+      	      console.log("hell0");
+      }
+          
+        
+     });   
+
+ </script>
+<style type="text/css">
+
+  body,div ,ul ,li ,p,h1,h2,h3,h5,a {
+            margin: 0px;
+            padding:0px;
+    }
+    a {
+    	text-decoration: none;
+    }
+
+      body {
+    	background-image: url(infoIMG/bg.jpg);
+    }
+   .head {
+    position: fixed;
+   	width: 100%;
+   	height: 60px;
+   	background: #eee;
+   	z-index: 20;
+      }
+    .head .left div{
+    	float: left;
+    	height: 60px;
+    	font-size: 12px;
+    	margin-left: 20px;
+    }
+    .head .left div p:first-child{
+                 border-bottom: 1px solid ;
+                 text-align: center;
+                 height: 30px;
+                 line-height: 30px;
+                 margin-bottom: 5px;
+                
+    }
+   .head .logo img{
+         width: 60px;
+         height: 60px;
+         border-radius: 50%;
+
+   }
+  .head .left {
+  	float: left;
+  	height: 60px;
+  	width: 200px;
+
+    }
+   .head .right {
+   	margin-right: 30px;
+   	float: right;
+   	height: 60px;
+   	line-height: 60px;
+   }
+  .head .right li {
+  	list-style: none;
+  	float: left;
+    margin-left: 20px;
+  }
+   .blank3 {
+   	 height: 60px;
+   	 width: 100%;
+   }
+   .content {
+   	position: relative;
+   }
+   .content .aside{
+
+   	  width: 80px;
+   	  height: 300px;
+   	  position: fixed;
+   	  left: 1250px;
+   	  top: 100px;
+   	  z-index: 20;
+   
+   }
+   .content .aside li  {
+   	   margin-top: 30px;
+   	   height: 20px;
+   	   list-style: none;
+   	  
+   }
+    .content .aside li a {
+    	  display: block;
+    	  height: 10px;
+    	  height: 10px;
+    	 background: url(infoIMG/aside_1.png) no-repeat;
+    }
+    .content .aside .active{
+    	 background: url(infoIMG/aside_2.png) no-repeat;
+      }
+ 
+   .content .sectionOne {
+   	height: 800px;
+   
+   }
+
+  .content .sectionOne  div:first-child {
+  	  height: 200px;
+  	  width: 700px;
+  	  margin: 0px auto;
+  	  padding-top: 100px;
+  	
+  	  position: relative;
+     
+  }
+
+   .content .sectionOne  div img{
+
+   	   display: block;
+   	   height: 130px;
+   	   width: 130px;
+   	   border-radius: 50%;
+   	   margin: 0px auto;
+   	   position: absolute;
+   	   top:200px;
+   	   left: 300px;
+       object-fit: cover;
+
+
+   }
+
+   .content .sectionOne span {
+   	    margin: 0px auto;
+    	display: block;
+    	height: 2px;
+    	width: 0px;
+    	background-color: #a10000;
+
+   }
+    .content .sectionOne  div h2 {
+    
+    	position: absolute;
+    	top: 330px;
+    	left: 130px;
+        opacity: 0;
+
+    } 
+
+  .content .sectionOne  div{
+          height: 200px;
+          
+          text-align: center;
+  }
+   .content .sectionOne  div  p {
+   	    margin-top: 10px;
+        height: 30px;
+        display: none;
+   }
+  .sectionTwo {
+  	   height: 800px;
+  }
+  .sectionTwo .infoTitle {
+  	  text-align: center;
+  }
+  .sectionTwo .infoTitle  span{
+  	
+  	  display: block;
+  	  width: 10px;
+  	  height: 2px;
+  	  margin: 0  auto;
+  	  background-color: red;
+  	  transition: width 2s;
+  }
+   .sectionTwo .infoTitle h5 {
+   	      display: none;
+   	      color: red;
+   }
+  .sectionTwo li {
+  	    list-style: none;
+  	    float: left;
+  	    margin-left: 30px;
+  	    height: 182px;
+  	    width: 100px;
+  }
+  .sectionTwo .info {
+  	  height: 180px;
+  	  width: 700px;
+  	  border: 1px solid #eee;
+  	  text-align: center;
+  	  margin: 0 auto;
+  	  border-radius: 20px;
+  	  background-color: #eee;
+  }
+  .sectionTwo .info li div {
+  	  margin-top: 8px;
+  	  height: 80px;
+  	  width: 80px;
+  	  border-radius: 50%;
+  	  border: 5px solid #fff;
+  	 
+  	  background-repeat:no-repeat;
+  	  background-position:10px;
+  	  transition: border 5s , background-color 3s;
+
+  	
+  }
+  .sectionTwo .info ul {
+  	height: 182px;
+  }
+
+   .sectionTwo .info li p{
+   	 margin-top: 8px;
+   }
+  .sectionTwo .infoTwo  {
+     text-align: center;
+     height: 200px;
+    
+ 
+  }
+   .sectionTwo .infoTwo div {
+      height: 154px;
+   	  width: 600px;
+   	  margin: 50px auto;
+   	  border: 1px solid ;
+   	  box-sizing: border-box;
+   	  overflow: hidden;
+   	  position: relative;
+   }
+   .sectionTwo .infoTwo div p{
+   	     width: 100%;
+   	     text-align: center;
+         height: 38px;
+         line-height: 38px;  
+         position: absolute;
+         top: 150px;
+       
+     
+    
+   }
+
+   .sectionThree {
+   	height: 800px
+   }
+   .sectionThree .title {
+   	  text-align: center;
+   }
+
+   .sectionThree .title span{
+  	
+  	  display: block;
+  	  width: 10px;
+  	  height: 2px;
+  	  margin: 0  auto;
+  	  background-color: red;
+  	  transition: width 2s;
+  }
+   .sectionThree .title  h5{
+   	  display: none;
+   	   color: red;
+   }
+    .sectionThree .skillInfo {
+          height: 300px;
+
+
+    }
+
+    .sectionThree .skillInfo >ul {
+    	width: 800px;
+    	margin: 50px auto;
+    }
+   .sectionThree .skillInfo >ul>li {
+   	 height: 300px;
+   	 list-style: none;
+   	 float: left;
+   	 margin-left: 30px;
+   }
+   .sectionThree .skillInfo >ul>li div:first-child {
+    
+   	    width: 222px;
+   	  
+   	    margin:0px auto;
+   	    text-align: center;
+   }
+    .sectionThree .skillInfo >ul>li div img {
+    
+    	width: 40px;
+    	height: 50px;
+    	
+    	transition: width 2s ,height 2s 
+
+    }
+   .sectionThree .skillInfo >ul>li h3 {
+   	   text-align: center;
+   	   height: 11px;
+   	   font-size: 11px;
+   	   transition: font-size 100;
+   }
+   .sectionThree .skillInfo >ul>li span {
+   	  
+   	    margin: 0px auto;
+   	    display: block;
+   	   
+   }
+
+    .sectionThree .skillInfo >ul>li span img {
+
+    	height: 10px;
+    	width: 10px;
+    	margin-left: 100px;
+    
+    }
+   .sectionThree .skillInfo >ul>li li {
+   	list-style-type: disc;
+   }
+   .sectionThree .skillInfo >ul>li div:last-child {
+   	  float: left;
+   	  height: 130px;
+   	  width: 200px;
+   	  border: 1px solid #eee;
+   	  border-radius: 5%;
+   	  margin: 10px;
+   	  background-color: #eee;
+   	  display: none;
+
+
+
+   }
+
+   .sectionThree .skillInfo >ul>li ul {
+   	 
+   	  height: 120px;
+   	  width: 200px;
+   	  border: 1px solid #eee;
+   	  border-radius: 5%;
+   	  margin: 10px;
+   	  font-size: 12px;
+   	  font-family: Macsoft yahei;
+
+   	
+   }
+
+    .sectionFour{
+  	   height: 800px;
+  }
+  .sectionFour .jobTitle {
+  	  text-align: center;
+
+  }
+
+ .sectionFour .jobTitle span{
+  	
+  	  display: block;
+  	  width: 10px;
+  	  height: 2px;
+  	  margin: 0  auto;
+  	  background-color: red;
+  	  transition: width 2s;
+  }
+   .sectionFour .jobTitle h5{
+       display: none;
+   	   color: red;
+   	}
+  .sectionFour .jobContent{
+  	 width: 902px;
+  	 height: 300px;
+  	 overflow: hidden;
+  	  margin: 20px auto;
+  	  position: relative;
+  	  top: 30px;
+  	
+  }
+  
+   .sectionFour .jobContent .dirLeft {
+
+   	  position: absolute;
+   	  top:130px;
+   	  left: 20px;
+   	  z-index: 10;
+
+     
+   }
+   .sectionFour .jobContent .dirRight {
+   	  position: absolute;
+   	   top: 130px;
+   	   left: 839px;
+   	   z-index: 10;
+   }
+
+  .sectionFour .items {
+          width: 3000px;
+          position: absolute;
+
+  }
+  .sectionFour .tabItem {
+  	  height: 300px;
+  	  width: 900px;
+  	  background: url(infoIMG/list_bg.jpg) no-repeat;
+  	  border: 1px solid #eee;
+  	  float: left;
+  	
+
+  }
+  .sectionFour .tabItem .itemLeft {
+
+  	  margin:50px 100px;
+  	  font-size: 13px;
+  }
+  .sectionFour .tabItem li {
+  	 margin-top: 20px;
+  	 list-style-type: disc;
+  }
+
+
+   .sectionFive{
+  	   height: 800px;
+  }
+  .sectionFive .demoTitle {
+  	  text-align: center;
+  }
+    .sectionFive .demoTitle span{
+  	
+  	  display: block;
+  	  width: 10px;
+  	  height: 2px;
+  	  margin: 0  auto;
+  	  background-color: red;
+  	  transition: width 2s;
+  }
+   .sectionFive .demoTitle h5 {
+   	display: none;
+   	color: red;
+   }
+
+  .sectionFive li {
+  	list-style:none;
+  	float: left;
+  	margin-left: 80px;
+  }
+
+  .sectionFive li img {
+  	 display: none;
+  } 
+</style>
+</head>
+<body style="overflow:scroll;overflow-y:hidden">
+ <div class="head">
+ 	 <div class="left">
+ 	 	 <div class="logo"> <img src="infoIMG/logo.jpg"></div>
+ 	 	 <div>
+ 	 	 	<p>F2E</p>
+ 	 	 	<P>个人简历</P>
+ 	 	 </div>
+ 	 </div>
+ 	 <div class="right">
+ 	 	<ul>
+ 	 		<li><a href="">首页</a></li>
+ 	 		<li><a href="">随笔</a></li>
+ 	 		<li><a href="">积淀</a></li>
+ 	 		<li><a href="">关于</a></li>
+ 	 		
+ 	 		
+ 	 	</ul>
+ 	 </div>
+ </div>
+ <div class="blank3"></div>
+ <div class="content">
+    
+      	<ul class="aside">
+      		<li class="active"  id="sectionOne" ><a href="#one" ></a></li>
+      		<li id="sectionTwo"><a href="#two"   ></a></li>
+      		<li id="sectionThree"><a href="#three"></a></li>
+      		<li id="sectionFour"><a href="#four" ></a></li>
+      		<li id="sectionFive"><a href="#five"  ></a></li>
+      	</ul>
+  
+ 	  <div class="sectionOne" id="one"> 
+ 	     <div> <img src="infoIMG/job.jpg">
+ 	           <h2>生活就是不断尝试，寻找到自己的方向，然后一往无前。</h2>
+ 	     </div>
+ 	     <span class="blank1"></span>
+ 	     <div>  <p>我叫 全宏灿 </p>
+
+                  <p>25岁</p>
+
+                   <p>期待成为一名前端研发工程师 </p>
+
+                  <p> 503136506@qq.com  </p>
+          </div>
+ 	  </div>
+ 	 
+ 	  <div class="sectionTwo" id="two">
+ 	  	  <div class="infoTitle"><h1>关于我</h1>
+ 	  	                         <span></span>
+ 	  	                         <h5>ABOUT ME</h5>
+ 	  	  </div>
+ 	  	  <div class="info"><ul>
+ 	  	  	        <li>  <div style=" background-image: url(infoIMG/education.png) "></div>  <p>学历</p> <p>本科</p></li>
+ 	  	  	        <li>  <div style=" background-image: url(infoIMG/age.png)"></div>  <p>年龄</p> <p>25</p></li>
+ 	  	  	        <li>  <div style=" background-image: url(infoIMG/location.png) "></div>  <p>居住地</p> <p>广州</p></li>
+ 	  	  	        <li>  <div style=" background-image: url(infoIMG/status.png) "></div>  <p>状态</p> <p>离职</p></li>
+ 	  	  	       
+ 	  	      </ul>
+ 	  	  </div>
+ 	  	  <div class="infoTwo">
+ 	  	     <div>
+ 	  	       <p>2014年毕业于长沙大学 </p>
+               <p>代码让我找到自己的方向</p>
+               <p>缤彩纷澜的界面让人忍不住一探究竟</p>
+               <p> 兴趣让我一路找到前端门槛  </p>
+             </div>
+ 	  	  </div>
+ 	  </div>
+ 	  <div class="sectionThree" id="three">
+ 	  	   <div class="title"><h1> 专业技能</h1>
+ 	  	                      <span></span>
+ 	  	                      <h5>SKILL</h5>
+ 	  	   </div>
+ 	  	   <div>前端的学习需要持之以恒，知识深度与广度都很重要。而前端开发的重中之重就是原生javascript的理解，而如今的思路必需有模块化，组件化，工程化</div>
+ 	  	   <div class="skillInfo"> 
+ 	  	           <ul>
+ 	  	   	        <li> <div><img src="infoIMG/html.png"> </div>  
+ 	  	   	             <h3>HTML</h3>
+ 	  	   	             <span><img src="infoIMG/skill_flag.png"></span> 
+
+ 	  	   	             <div>  
+ 	  	   	                 <ul>
+ 	  	   	                   <li>熟悉web标准</li>
+                               <li>熟练运用html标签</li>
+                               <li>熟悉html5</li>
+ 	  	   	                </ul>
+ 	  	   	                </div>
+ 	  	   	          
+ 	  	   	        </li>
+ 	  	   	        <li> <div><img src="infoIMG/css.png"> </div>  
+ 	  	   	             <h3>CSS</h3>
+ 	  	   	             <span><img src="infoIMG/skill_flag.png"></span> 
+ 	  	   	             <div>
+ 	  	   	             <ul><li>熟练运用css以及css3</li>
+                              <li>能处理浏览器对于css的兼容问题</li>
+                             
+ 	  	   	             </ul>
+ 	  	   	             </div>
+ 	  	   	        </li>
+ 	  	   	         <li> 
+ 	  	   	             <div><img src="infoIMG/js.png"> </div>  
+ 	  	   	             <h3>JavaScript</h3>
+ 	  	   	             <span><img src="infoIMG/skill_flag.png"></span> 
+
+ 	  	   	             <div>
+ 	  	   	             <ul><li>掌握js原生用法</li>
+                              <li>掌握jquery框架用法</li>
+                              <li>了解jquery插件开发 和js组件开发</li>
+ 	  	   	             </ul>
+ 	  	   	             </div>
+ 	  	   	        </li>
+ 	  	         </ul>
+ 	  	   </div>
+ 	  </div>
+ 	  <div class="sectionFour" id="four">
+ 	       <div class="jobTitle"><h1>我的经历</h1>
+ 	                             <span></span>
+ 	  	                       <h5>EXPERIENCE</h5>
+ 	  	   </div>
+ 	  	   <div class="jobContent">
+             <div class="dirLeft"><img src="infoIMG/toleft.png"></div>
+             <div class="dirRight "><img src="infoIMG/toright.png"></div>
+             <div class="items">
+ 	  	     <div  class="tabItem first">
+ 	  	     <div class="itemLeft">
+ 	  	      <h2>小步科技有限公司</h2>
+              <div><img src=""></div>
+ 	  	      <ul>
+ 	  	  	     <li>2016.1-2016.9</li>
+               <li>UI制作和业务处理代码编写</li>
+               <li>实现listview布局展示、下拉刷新等功能</li>
+               <li>实现http通信和XML、json数据解析</li>
+               <li>sqlite和shareprefs存取数据</li>
+
+ 	  	      </ul>
+ 	  	      </div>
+ 	  	  </div>
+
+ 	  	     <div  class="tabItem">
+ 	  	     <div class="itemLeft">
+ 	  	      <h2>宏江商务服务有限公司</h2>
+              <div><img src=""></div>
+ 	  	      <ul>
+ 	  	  	     <li>2014.12-2015.11</li>
+               <li>负责PS图片制作</li>
+               <li>根据要求负责企业页面制作</li>
+               <li>更新和维护网站</li>
+               <li>工作之余不断学习前端和安卓，提高自己技术水平</li>
+ 	  	  	   
+ 	  	      </ul>
+ 	  	      </div>
+ 	  	  </div>
+
+ 	  	     <div  class="tabItem last">
+ 	  	     <div class="itemLeft">
+ 	  	      <h2>学习实践</h2>
+
+               <li>自学html、css、javascript和java</li>
+               <li>了解android原生移动开发和hybrid混合开发</li>
+               <li>已在腾讯平台上线一款天气应用<strong>云简天气</strong></li>
+               <li>模仿凡客网站做了一个demo</li>
+              <div><img src=""></div>
+ 	  	      <ul>
+ 	  	  	    
+ 	  	      </ul>
+ 	  	      </div>
+ 	  	  </div>
+ 	      </div>
+ 	  	 </div> 
+ 	  </div>
+ 	  <div class="sectionFive" id="five">
+ 	  	      <div class="demoTitle">
+ 	  	         <h1>我的作品</h1>
+ 	  	          <span></span>
+ 	  	          <h5>DEMO</h5>
+ 	  	      </div>
+ 	  	      <div>
+ 	  	      	 <ul>
+ 	  	      	 	<li><a href="https://mrquan122.github.io/vanclDemo2/"> <img src="infoIMG/demo_box1.jpg"></a></li>
+ 	  	      	 	<li><a href="https://mrquan122.github.io/vanclDemo1/"> <img src="infoIMG/demo_box2.jpg"></a></li>
+ 	  	      	 	<li><a href="https://mrquan122.github.io/vanclDemo2/"> <img src="infoIMG/demo_box3.jpg"></a></li>
+                  
+ 	  	      	 </ul>
+ 	  	      </div>
+ 	  </div>
+ </div>    
+</body>
+</html>
